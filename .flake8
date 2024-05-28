@@ -1,0 +1,14 @@
+[flake8]
+exclude =
+    .git,
+    __pycache__,
+    build,
+    dist,
+    .venv,
+    venv,
+    env,
+    .tox,
+    .nox,
+    .eggs,
+    *.egg,
+select = TC001
