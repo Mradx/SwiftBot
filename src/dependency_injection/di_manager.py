@@ -1,4 +1,4 @@
-from src.database.db_manager import Database
+from src.database.database_manager import DatabaseManager
 from src.models.queue.user_queue_manager import UserQueueManager
 from src.models.user import User
 from src.repositories.gemini_repository import GeminiRepository
@@ -15,11 +15,11 @@ class DependencyManager:
         self.user_queue_manager = UserQueueManager()
         self.gemini_repository = GeminiRepository()
         self.translations_repository = TranslationsRepository()
-        self.database = None
+        self.database_manager = None
 
     def initialize_database(self):
-        self.database = Database()
-        self.database.initialize()
+        self.database_manager = DatabaseManager()
+        self.database_manager.initialize()
 
     async def get_translator(self, user: User) -> Translator:
         user_settings_repo = self.get_user_settings_repository(user.id)
