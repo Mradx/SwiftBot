@@ -4,6 +4,7 @@ import math
 import time
 from natsort import natsorted
 from src.config import HISTORY_PATH
+from src.utils.secure import secure_filename
 
 DEFAULT_HISTORY_NAME = "default"
 DEFAULT_HISTORY_FILENAME = f"{DEFAULT_HISTORY_NAME}.json"
@@ -54,6 +55,8 @@ class UserHistoryRepository:
         return history_names, total_pages
 
     def load_history(self, history_name=DEFAULT_HISTORY_NAME):
+        history_name = secure_filename(history_name)
+
         try:
             with open(os.path.join(self.__user_dir, f"{history_name}.json"), "r", encoding="utf-8") as f:
                 data = json.load(f)
@@ -64,7 +67,7 @@ class UserHistoryRepository:
         except FileNotFoundError:
             return [], None
 
-    def save_history(self, history=None, system_instruction=None, history_name=DEFAULT_HISTORY_NAME):
+    def save_history(self, history=None, system_instruction=None, history_name=DEFAULT_HISTORY_NAME) -> str:
         if history is None and system_instruction is None:
             history, system_instruction = self.load_history()
 
@@ -73,10 +76,14 @@ class UserHistoryRepository:
             "system_instruction": system_instruction
         }
 
+        history_name = secure_filename(history_name)
         with open(os.path.join(self.__user_dir, f"{history_name}.json"), "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=4)
 
+        return history_name
+
     def delete_history(self, history_name: str) -> None:
+        history_name = secure_filename(history_name)
         file_path = os.path.join(self.__user_dir, f"{history_name}.json")
         if os.path.exists(file_path):
             os.remove(file_path)

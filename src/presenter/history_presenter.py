@@ -26,7 +26,7 @@ class HistoryPresenter(BasePresenter):
         if history_count >= MAX_HISTORY_COUNT:
             return self.translator("history_limit_reached", max_count=MAX_HISTORY_COUNT)
 
-        self.__user_history_repo.save_history(history_name=history_name)
+        history_name = self.__user_history_repo.save_history(history_name=history_name)
         return self.translator("history_saved", history_name=history_name)
 
     async def confirm_delete_history(self, history_name: str) -> [str | InlineKeyboardMarkup]:
