@@ -7,5 +7,6 @@ mongoengine==0.28.2
 natsort==8.4.0
 protobuf>=3.19.5,<5.0.0
 python-dotenv==1.0.1
+python-magic==0.4.27
 setuptools==69.2.0
 textract==1.6.5

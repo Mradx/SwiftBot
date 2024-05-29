@@ -13,6 +13,7 @@ BOT_TOKEN = os.getenv("BOT_TOKEN")
 HISTORY_PATH = "data/history"
 LOCALES_PATH = "assets/locales"
 IMAGES_PATH = "assets/images"
+TEMP_PATH = "temp"
 DEFAULT_LANGUAGE = "en"
 PAGINATION_LIMIT = 5
 RESPONSE_DELAY = 2
