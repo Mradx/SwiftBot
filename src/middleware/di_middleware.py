@@ -20,7 +20,7 @@ class DIMiddleware(BaseMiddleware):
             event: types.Update,
             data: Dict[str, Any],
     ) -> Any:
-        user = self.get_user_data(event)
+        user = await self.get_user_data(event)
 
         user_history_repo = self.di_manager.get_user_history_repository(user.id, user.name)
         user_queue_repo = self.di_manager.get_user_queue_repository(user.id)
@@ -46,8 +46,7 @@ class DIMiddleware(BaseMiddleware):
 
         return await handler(event, data)
 
-    @staticmethod
-    def get_user_data(event: types.Update) -> User:
+    def _extract_user_info(self, event: types.Update):
         user_id = None
         user_name = ""
         user_language = DEFAULT_LANGUAGE
@@ -60,4 +59,14 @@ class DIMiddleware(BaseMiddleware):
             if user.last_name:
                 user_name += f" {user.last_name}"
 
+        return user_id, user_name, user_language
+
+    async def _get_user_language(self, user_id: int, default_language: str) -> str:
+        user_settings_repo = self.di_manager.get_user_settings_repository(user_id)
+        user_custom_language = await user_settings_repo.get_user_language()
+        return user_custom_language if user_custom_language else default_language
+
+    async def get_user_data(self, event: types.Update) -> User:
+        user_id, user_name, user_language = self._extract_user_info(event)
+        user_language = await self._get_user_language(user_id, user_language)
         return User(user_id, user_name, user_language)

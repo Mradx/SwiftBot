@@ -7,12 +7,16 @@ class BasePresenter:
         self._translator = translator
         self.__user_id = user.id
         self.__user_name = user.name
+        self.__user_language = user.language
 
     def get_user_id(self):
         return self.__user_id
 
     def get_user_name(self):
         return self.__user_name
+
+    def get_user_language(self):
+        return self.__user_language
 
     def get_user_data_key(self, data_key: str) -> str:
         user_id = self.get_user_id()

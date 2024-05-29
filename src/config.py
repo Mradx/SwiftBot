@@ -14,7 +14,7 @@ HISTORY_PATH = "data/history"
 LOCALES_PATH = "assets/locales"
 IMAGES_PATH = "assets/images"
 TEMP_PATH = "temp"
-DEFAULT_LANGUAGE = "en"
+DEFAULT_LANGUAGE = "ru"
 PAGINATION_LIMIT = 5
 RESPONSE_DELAY = 2
 
@@ -68,3 +68,53 @@ GEMINI_SUPPORTED_MIME_TYPES = {
     '.flac': 'audio/flac',
     '.txt': 'text/plain'
 }
+
+GEMINI_SUPPORTED_LANGUAGES = [
+    "en",  # English
+    "ja",  # Japanese
+    "ko",  # Korean
+    "ar",  # Arabic
+    "id",  # Bahasa Indonesia
+    "bn",  # Bengali
+    "bg",  # Bulgarian
+    "zh-CN",  # Chinese (Simplified)
+    "zh-TW",  # Chinese (Traditional)
+    "hr",  # Croatian
+    "cs",  # Czech
+    "da",  # Danish
+    "nl",  # Dutch
+    "et",  # Estonian
+    "fa",  # Farsi
+    "fi",  # Finnish
+    "fr",  # French
+    "de",  # German
+    "gu",  # Gujarati
+    "el",  # Greek
+    "he",  # Hebrew
+    "hi",  # Hindi
+    "hu",  # Hungarian
+    "it",  # Italian
+    "kn",  # Kannada
+    "lv",  # Latvian
+    "lt",  # Lithuanian
+    "ml",  # Malayalam
+    "mr",  # Marathi
+    "no",  # Norwegian
+    "pl",  # Polish
+    "pt",  # Portuguese
+    "ro",  # Romanian
+    "ru",  # Russian
+    "sr",  # Serbian
+    "sk",  # Slovak
+    "sl",  # Slovenian
+    "es",  # Spanish
+    "sw",  # Swahili
+    "sv",  # Swedish
+    "ta",  # Tamil
+    "te",  # Telugu
+    "th",  # Thai
+    "tr",  # Turkish
+    "uk",  # Ukrainian
+    "ur",  # Urdu
+    "vi"   # Vietnamese
+]

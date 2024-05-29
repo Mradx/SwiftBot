@@ -123,7 +123,9 @@ class ChatPresenter(BasePresenter):
 
     async def generate_gemini_response(self, gemini_inputs: list) -> str:
         history, system_instruction = self.__user_history_repo.load_history()
-        response = await self.__gemini_repo.generate_content(history, system_instruction, gemini_inputs)
+        response = await self.__gemini_repo.generate_content(
+            history, system_instruction, gemini_inputs,
+            self.get_user_language())
 
         if not response.candidates:
             raise ValueError(self.translator("no_response"))
