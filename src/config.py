@@ -10,15 +10,16 @@ PROXY = os.environ.get('PROXY')
 
 # Telegram
 BOT_TOKEN = os.getenv("BOT_TOKEN")
-HISTORY_PATH = "data/history"
-LOCALES_PATH = "assets/locales"
-IMAGES_PATH = "assets/images"
-TEMP_PATH = "temp"
 DEFAULT_LANGUAGE = "ru"
+HISTORY_PATH = "data/history"
+IMAGES_PATH = "assets/images"
+LOCALES_PATH = "assets/locales"
+TEMP_PATH = "temp"
+MAX_HISTORY_COUNT = 25
+MAX_HISTORY_NAME_LENGTH = 48
+MAX_MESSAGE_TASKS = 99
 PAGINATION_LIMIT = 5
 RESPONSE_DELAY = 2
-MAX_HISTORY_NAME_LENGTH = 48
-MAX_HISTORY_COUNT = 25
 
 # MongoDB
 MONGO_URI = os.environ.get('MONGO_URI')

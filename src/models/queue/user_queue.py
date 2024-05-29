@@ -1,5 +1,7 @@
 from collections import deque
 
+from src.config import MAX_MESSAGE_TASKS
+
 
 class UserQueue:
     def __init__(self):
@@ -14,7 +16,8 @@ class UserQueue:
         self.__queue.clear()
 
     def add_task(self, task):
-        self.__queue.append(task)
+        if len(self.__queue) < MAX_MESSAGE_TASKS:
+            self.__queue.append(task)
 
     def get_processing_task(self):
         return self.__processing_task
@@ -32,3 +35,6 @@ class UserQueue:
 
     def set_error_message_id(self, message_id):
         self.__error_message_id = message_id
+
+    def is_queue_full(self):
+        return len(self.__queue) >= MAX_MESSAGE_TASKS

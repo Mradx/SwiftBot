@@ -29,3 +29,6 @@ class UserQueueRepository:
 
     def set_error_message_id(self, message_id):
         self.__user_queue.set_error_message_id(message_id)
+
+    def is_queue_full(self):
+        return self.__user_queue.is_queue_full()
