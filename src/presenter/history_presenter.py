@@ -1,6 +1,6 @@
 from aiogram.types import InlineKeyboardMarkup
 
-from src.config import PAGINATION_LIMIT
+from src.config import PAGINATION_LIMIT, MAX_HISTORY_NAME_LENGTH, MAX_HISTORY_COUNT
 from src.handlers.keyboards import (kb_confirm_delete_history, kb_confirm_load_history, kb_history_for_load,
                                     kb_history_for_delete)
 from src.models.user import User
@@ -18,12 +18,13 @@ class HistoryPresenter(BasePresenter):
         self.__user_queue_repo = user_queue_repo
 
     async def save_history(self, history_name: str) -> str:
-        if len(history_name) > 20:
-            return self.translator("history_name_too_long", length=len(history_name))
+        if len(history_name) > MAX_HISTORY_NAME_LENGTH:
+            return self.translator("history_name_too_long", length=len(history_name),
+                                   max_length=MAX_HISTORY_NAME_LENGTH)
 
         history_count = len(self.__user_history_repo.get_history_names_all())
-        if history_count >= 20:
-            return self.translator("history_limit_reached")
+        if history_count >= MAX_HISTORY_COUNT:
+            return self.translator("history_limit_reached", max_count=MAX_HISTORY_COUNT)
 
         self.__user_history_repo.save_history(history_name=history_name)
         return self.translator("history_saved", history_name=history_name)
