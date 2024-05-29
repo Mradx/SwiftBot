@@ -38,10 +38,10 @@ class ChatHandler:
     async def process_queue_after_delay(self, message, delay, retry_count=0):
         try:
             error_message_id = self.__chat_presenter.get_error_message_id()
-
             if error_message_id:
                 text = self.__chat_presenter.translator("retrying_please_wait")
-                await self.send_or_update_message(message, text, error_message_id)
+                self.__chat_presenter.set_error_message_id(
+                    await self.send_or_update_message(message, text, error_message_id))
 
             if delay > 0:
                 await asyncio.sleep(delay)
@@ -57,6 +57,7 @@ class ChatHandler:
 
                 self.__chat_presenter.reset_queue_and_task()
 
+                error_message_id = self.__chat_presenter.get_error_message_id()
                 if error_message_id:
                     await self.__bot.delete_message(chat_id=message.chat.id, message_id=error_message_id)
                     self.__chat_presenter.set_error_message_id(None)
