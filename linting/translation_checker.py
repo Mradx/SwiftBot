@@ -38,7 +38,9 @@ class TranslationKeyVisitor(Visitor):
         return translations
 
     def visit_Call(self, node):
-        if isinstance(node.func, ast.Attribute) and node.func.attr == 'translator':
+        if (isinstance(node.func, ast.Attribute) and node.func.attr == 'translator') or \
+                (isinstance(node.func, ast.Name) and node.func.id == 'translator'):
+
             if len(node.args) > 0:
                 key = parse_string_literal(node.args[0])
                 if key:
@@ -51,5 +53,5 @@ class TranslationKeyVisitor(Visitor):
 
 class TranslationCheckerPlugin(Plugin):
     name = 'translation_checker'
-    version = '1'
+    version = '1.0'
     visitors = [TranslationKeyVisitor]
