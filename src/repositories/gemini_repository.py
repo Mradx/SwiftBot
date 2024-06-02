@@ -13,7 +13,7 @@ class GeminiRepository:
         self.__model_name = GEMINI_MODEL
 
     def _get_model(self, user_system_instruction=None, user_language=None):
-        system_instruction = GEMINI_DEFAULT_SYSTEM_INSTRUCTIONS
+        system_instruction = GEMINI_DEFAULT_SYSTEM_INSTRUCTIONS[:]
 
         if user_system_instruction:
             system_instruction.append(user_system_instruction)
