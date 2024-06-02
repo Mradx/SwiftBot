@@ -6,6 +6,7 @@ from src.callback_data.history_callback_data import HistoryCallbackData
 from src.callback_data.instruction_callback_data import InstructionCallbackData
 from src.callback_data.language_callback_data import LanguageCallbackData
 from src.callback_data.pagination_callback_data import PaginationCallbackData
+from src.config import GITHUB_REPO_URL
 from src.handlers.callbacks.common_callbacks import CancelCallbackData
 from src.utils.translator import Translator
 
@@ -78,7 +79,8 @@ def kb_menu(translator: Translator, current_page: int = 1):
             InlineKeyboardButton(text=translator("update_language"),
                                  callback_data=LanguageCallbackData(
                                      action=LanguageCallbackData.Action.UPDATE,
-                                     lang_name=None).pack())
+                                     lang_name=None).pack()),
+            InlineKeyboardButton(text=translator("github"), url=GITHUB_REPO_URL)
         ]
     ]
 

@@ -1,9 +1,10 @@
 {
-  "start_message": "Hello! I am a regular AI bot, but I can become anything you want 😉\n\n<i>Here's a brief list of my commands that might be useful for you:</i>\n\n- <b>/menu</b> - Show the main menu with additional options and settings.\n- <b>/save [name]</b> - Save the current chat history with the specified name. If no name is specified, I will ask you to enter one.\n- <b>/load [name]</b> - Load the saved history.\n- <b>/delete [name]</b> - Delete the saved history.\n- <b>/clear</b> - Clear the current history and instruction.\n- <b>/setinst [instruction]</b> - Set the system instruction.\n- <b>/delinst</b> - Clear the current system instruction.\n- <b>/edit</b> - Edit the last response.\n- <b>/language [language]</b> - Change the language.",
+  "start_message": "Hello! I am a regular AI bot, but I can become anything you want 😉\n\n<i>Here's a brief list of my commands that might be useful for you:</i>\n\n- <b>/menu</b> - Show the main menu with additional options and settings.\n- <b>/save [name]</b> - Save the current chat history with the specified name. If no name is specified, I will ask you to enter one.\n- <b>/load [name]</b> - Load the saved history.\n- <b>/delete [name]</b> - Delete the saved history.\n- <b>/clear</b> - Clear the current history and instruction.\n- <b>/setinst [instruction]</b> - Set the system instruction.\n- <b>/delinst</b> - Clear the current system instruction.\n- <b>/edit</b> - Edit the last response.\n- <b>/language [language]</b> - Change the language.\n\nI have open source code on <a href='{github_repo_url}'>GitHub</a>.",
   "begin_chat": "Write any message to chat with me.",
   "info_text": "<b>Information:</b>\n\n    📝 <b>Instruction:</b> {system_instruction}\n\n    📊 <b>Messages in history:</b> {history_count} ({tokens} tokens)\n\n    💾 <b>Saved histories:</b> {saved_histories_count}",
 
   "menu": "❇️ Menu",
+  "github": "🐙 GitHub",
 
   "choose_language": "🌎 Choose language",
   "language_updated": "✅ Language successfully changed to '{lang_name}'.",

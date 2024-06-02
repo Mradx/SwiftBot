@@ -8,8 +8,8 @@ load_dotenv()
 USE_PROXY = False
 PROXY = os.environ.get('PROXY')
 
-# Telegram
-BOT_TOKEN = os.getenv("BOT_TOKEN")
+# Bot
+GITHUB_REPO_URL = "https://github.com/Mradx/SwiftBot"
 DEFAULT_LANGUAGE = "ru"
 HISTORY_PATH = "data/history"
 IMAGES_PATH = "assets/images"
@@ -24,6 +24,9 @@ RESPONSE_DELAY = 2
 # MongoDB
 MONGO_URI = os.environ.get('MONGO_URI')
 MONGO_DB_NAME = "telegram_bot"
+
+# Telegram
+BOT_TOKEN = os.getenv("BOT_TOKEN")
 
 # Gemini
 GEMINI_MODEL = "gemini-1.5-pro-latest"
